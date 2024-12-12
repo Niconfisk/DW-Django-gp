@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{ filme.nome }}</h1>
+<p>Descricao: {{ filme.descricao }}</p>
+<p>Duração: {{ filme.duracao }}</p>
+<p>Categoria(s):</p>
+<p>Data de Lançamento: {{ filme.data_lancamento }}</p>
+<ul>
+    {% for categoria in filme.categorias.all %}
+    <li><a href="{% url 'detalhe_categoria' categoria.id %}">{{ categoria.nome }}</a></li>
+    {% endfor %}
+</ul>
+<strong><h3>Atores no filme:</h3></strong>
+<ul>
+    {% for ator in filme.atores.all %}
+    <li><a href="{% url 'detalhe_ator' ator.id %}">{{ ator.nome }}</a></li>
+    {% endfor %}
+</ul>
+<a href="{% url 'atualizar_filme' filme.id %}" class="btn">Editar</a>
+<a href="{% url 'deletar_filme' filme.id %}" class="btn">Deletar</a>
+{% endblock %}
