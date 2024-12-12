@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Cinema</title>
+    <link rel="stylesheet" href="{% static 'css/estilo.css' %}">
+    <script src="{% static 'js/main.js' %}" defer></script> 
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'lista_filmes' %}">Filmes</a></li>
+                <li><a href="{% url 'lista_atores' %}">Atores</a></li>
+                <li><a href="{% url 'lista_categorias' %}">Categorias</a></li>
+                <li><a href="{% url 'lista_avaliacoes' %}">Avaliações</a></li>
+                <li><a href="{% url 'lista_plataformas' %}">Plataformas</a></li>
+                <li><a href="{% url 'lista_ingressos' %}">Ingressos</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'user_logout' %}">Logout</a></li>
+                    <li><a href="{% url 'detalhe_usuario' user.id %}">Usuario</a></li>
+                {% else %}
+                    <li><a href="{% url 'user_login' %}">Login</a></li>
+                    <li><a href="{% url 'user_register' %}">Registrar</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+        
+    </header>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
