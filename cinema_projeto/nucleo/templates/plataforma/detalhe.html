@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{ plataforma.nome }}</h1>
+
+<a href="{% url 'atualizar_plataforma' plataforma.id %}" class="btn">Editar</a>
+<a href="{% url 'deletar_plataforma' plataforma.id %}" class="btn">Deletar</a>
+
+<ul>
+    {% for filme in plataforma.filmes.all %}
+    <li><a href="{% url 'detalhe_filme' filme.id %}">{{ filme.nome }}</a></li>
+    {% endfor %}
+</ul>
+{% endblock %}

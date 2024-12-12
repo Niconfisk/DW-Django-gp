@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Lista de Plataformas</h1>
+<a href="{% url 'criar_plataforma' %}" class="btn">Nova Plataforma</a>
+<ul>
+    {% for plataforma in plataformas %}
+    <li>
+        <a href="{% url 'detalhe_plataforma' plataforma.id %}">{{ plataforma.nome }}</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
