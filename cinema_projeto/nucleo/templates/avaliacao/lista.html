@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Lista de Avaliações</h1>
+<a href="{% url 'criar_avaliacao' %}" class="btn">Nova Avaliação</a>
+<ul>
+    {% for avaliacao in avaliacoes %}
+    <li>
+        <a href="{% url 'detalhe_avaliacao' avaliacao.id %}">{{ avaliacao.filme.nome }} - {{ avaliacao.usuario.username }}</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

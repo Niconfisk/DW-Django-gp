@@ -131,3 +131,148 @@ def deletar_categoria(request, categoria_id):
         categoria.delete()
         return redirect('lista_categorias')
     return render(request, 'categoria/confirm_delete.html', {'categoria': categoria})
+
+# CRUD para Plataforma
+def lista_plataformas(request):
+    plataformas = Plataforma.objects.all()
+    return render(request, 'plataforma/lista.html', {'plataformas': plataformas})
+
+def detalhe_plataforma(request, plataforma_id):
+    plataforma = get_object_or_404(Plataforma, id=plataforma_id)
+    return render(request, 'plataforma/detalhe.html', {'plataforma': plataforma})
+
+@login_required
+def criar_plataforma(request):
+    if request.method == 'POST':
+        form = PlataformaForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('lista_plataformas')
+    else:
+        form = PlataformaForm()
+    return render(request, 'plataforma/form.html', {'form': form})
+
+@login_required
+def atualizar_plataforma(request, plataforma_id):
+    plataforma = get_object_or_404(Plataforma, id=plataforma_id)
+    if request.method == 'POST':
+        form = PlataformaForm(request.POST, instance=plataforma)
+        if form.is_valid():
+            form.save()
+            return redirect('lista_plataformas')
+    else:
+        form = PlataformaForm(instance=plataforma)
+    return render(request, 'plataforma/form.html', {'form': form})
+
+@login_required
+def deletar_plataforma(request, plataforma_id):
+    plataforma = get_object_or_404(Plataforma, id=plataforma_id)
+    if request.method == 'POST':
+        plataforma.delete()
+        return redirect('lista_plataformas')
+    return render(request, 'plataforma/confirm_delete.html', {'plataforma': plataforma})
+
+# CRUD para Ingresso
+def lista_ingressos(request):
+    ingressos = Ingresso.objects.all()
+    return render(request, 'ingresso/lista.html', {'ingressos': ingressos})
+
+def detalhe_ingresso(request, ingresso_id):
+    ingresso = get_object_or_404(Ingresso, id=ingresso_id)
+    return render(request, 'ingresso/detalhe.html', {'ingresso': ingresso})
+
+@login_required
+def criar_ingresso(request):
+    if request.method == 'POST':
+        form = IngressoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('lista_ingressos')
+    else:
+        form = IngressoForm()
+    return render(request, 'ingresso/form.html', {'form': form})
+
+@login_required
+def atualizar_ingresso(request, ingresso_id):
+    ingresso = get_object_or_404(Ingresso, id=ingresso_id)
+    if request.method == 'POST':
+        form = IngressoForm(request.POST, instance=ingresso)
+        if form.is_valid():
+            form.save()
+            return redirect('lista_ingressos')
+    else:
+        form = IngressoForm(instance=ingresso)
+    return render(request, 'ingresso/form.html', {'form': form})
+
+@login_required
+def deletar_ingresso(request, ingresso_id):
+    ingresso = get_object_or_404(Ingresso, id=ingresso_id)
+    if request.method == 'POST':
+        ingresso.delete()
+        return redirect('lista_ingressos')
+    return render(request, 'ingresso/confirm_delete.html', {'ingresso': ingresso})
+
+# CRUD para Avaliacao
+def lista_avaliacoes(request):
+    avaliacoes = Avaliacao.objects.all()
+    return render(request, 'avaliacao/lista.html', {'avaliacoes': avaliacoes})
+
+def detalhe_avaliacao(request, avaliacao_id):
+    avaliacao = get_object_or_404(Avaliacao, id=avaliacao_id)
+    return render(request, 'avaliacao/detalhe.html', {'avaliacao': avaliacao})
+
+@login_required
+def criar_avaliacao(request):
+    if request.method == 'POST':
+        form = AvaliacaoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('lista_avaliacoes')
+    else:
+        form = AvaliacaoForm()
+    return render(request, 'avaliacao/form.html', {'form': form})
+
+@login_required
+def atualizar_avaliacao(request, avaliacao_id):
+    avaliacao = get_object_or_404(Avaliacao, id=avaliacao_id)
+    if request.method == 'POST':
+        form = AvaliacaoForm(request.POST, instance=avaliacao)
+        if form.is_valid():
+            form.save()
+            return redirect('lista_avaliacoes')
+    else:
+        form = AvaliacaoForm(instance=avaliacao)
+    return render(request, 'avaliacao/form.html', {'form': form})
+@login_required
+def deletar_avaliacao(request, avaliacao_id):
+    avaliacao = get_object_or_404(Avaliacao, id=avaliacao_id)
+    if request.method == 'POST':
+        avaliacao.delete()
+        return redirect('lista_avaliacoes')
+    return render(request, 'avaliacao/confirm_delete.html', {'avaliacao': avaliacao})
+
+# CRUD para Usuario
+@login_required
+def detalhe_usuario(request, usuario_id):
+    usuario = get_object_or_404(User, id=usuario_id)
+    return render(request, 'usuario/detalhe.html', {'usuario': usuario})
+
+@login_required
+def atualizar_usuario(request, usuario_id):
+    usuario = get_object_or_404(User, id=usuario_id)
+    if request.method == 'POST':
+        form = UsuarioForm(request.POST, instance=usuario)
+        if form.is_valid():
+            form.save()
+            return redirect('detalhe_usuario', usuario_id)
+    else:
+        form = UsuarioForm(instance=usuario)
+    return render(request, 'usuario/form.html', {'form': form})
+
+@login_required
+def deletar_usuario(request, usuario_id):
+    usuario = get_object_or_404(User, id=usuario_id)
+    if request.method == 'POST':
+        usuario.delete()
+        return redirect('user_register')
+    return render(request, 'usuario/confirm_delete.html', {'usuario': usuario})

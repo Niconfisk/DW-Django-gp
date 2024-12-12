@@ -23,4 +23,29 @@ urlpatterns = [
     path('categorias/novo/', views.criar_categoria, name='criar_categoria'),
     path('categorias/<int:categoria_id>/editar/', views.atualizar_categoria, name='atualizar_categoria'),
     path('categorias/<int:categoria_id>/deletar/', views.deletar_categoria, name='deletar_categoria'),
+    # Rotas para Plataforma
+    path('plataformas/', views.lista_plataformas, name='lista_plataformas'),
+    path('plataformas/<int:plataforma_id>/', views.detalhe_plataforma, name='detalhe_plataforma'),
+    path('plataformas/novo/', views.criar_plataforma, name='criar_plataforma'),
+    path('plataformas/<int:plataforma_id>/editar/', views.atualizar_plataforma, name='atualizar_plataforma'),
+    path('plataformas/<int:plataforma_id>/deletar/', views.deletar_plataforma, name='deletar_plataforma'),
+
+    # Rotas para Ingresso
+    path('ingressos/', views.lista_ingressos, name='lista_ingressos'),
+    path('ingressos/<int:ingresso_id>/', views.detalhe_ingresso, name='detalhe_ingresso'),
+    path('ingressos/novo/', views.criar_ingresso, name='criar_ingresso'),
+    path('ingressos/<int:ingresso_id>/editar/', views.atualizar_ingresso, name='atualizar_ingresso'),
+    path('ingressos/<int:ingresso_id>/deletar/', views.deletar_ingresso, name='deletar_ingresso'),
+
+    # Rotas para Avaliacao
+    path('avaliacoes/', views.lista_avaliacoes, name='lista_avaliacoes'),
+    path('avaliacoes/<int:avaliacao_id>/', views.detalhe_avaliacao, name='detalhe_avaliacao'),
+    path('avaliacoes/novo/', views.criar_avaliacao, name='criar_avaliacao'),
+    path('avaliacoes/<int:avaliacao_id>/editar/', views.atualizar_avaliacao, name='atualizar_avaliacao'),
+    path('avaliacoes/<int:avaliacao_id>/deletar/', views.deletar_avaliacao, name='deletar_avaliacao'),
+
+    # Rotas para Usuario
+    path('usuarios/<int:usuario_id>/', views.detalhe_usuario, name='detalhe_usuario'),
+    path('usuarios/<int:usuario_id>/editar/', views.atualizar_usuario, name='atualizar_usuario'),
+    path('usuarios/<int:usuario_id>/deletar/', views.deletar_usuario, name='deletar_usuario'),
 ]

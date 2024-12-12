@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Lista de Ingressos</h1>
+<a href="{% url 'criar_ingresso' %}" class="btn">Novo Ingresso</a>
+<ul>
+    {% for ingresso in ingressos %}
+    <li>
+        <a href="{% url 'detalhe_ingresso' ingresso.id %}">{{ ingresso.filme.nome }} - {{ ingresso.usuario.username }}</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
