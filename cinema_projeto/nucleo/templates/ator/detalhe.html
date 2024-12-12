@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{ ator.nome }}</h1>
+<p>Data de Nascimento: {{ ator.data_nascimento }}</p>
+<p>Biografia: {{ ator.biografia }}</p>
+
+<a href="{% url 'atualizar_ator' ator.id %}" class="btn">Editar</a>
+<a href="{% url 'deletar_ator' ator.id %}" class="btn">Deletar</a>
+{% endblock %}

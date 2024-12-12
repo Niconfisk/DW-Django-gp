@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{ categoria.nome }}</h1>
+
+<a href="{% url 'atualizar_categoria' categoria.id %}" class="btn">Editar</a>
+<a href="{% url 'deletar_categoria' categoria.id %}" class="btn">Deletar</a>
+{% endblock %}
