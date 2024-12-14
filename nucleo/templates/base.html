@@ -20,7 +20,6 @@
                 <li><a href="{% url 'lista_ingressos' %}">Ingressos</a></li>
                 {% if user.is_authenticated %}
                     <li><a href="{% url 'user_logout' %}">Logout</a></li>
-                    <li><a href="{% url 'detalhe_usuario' user.id %}">Usuario</a></li>
                 {% else %}
                     <li><a href="{% url 'user_login' %}">Login</a></li>
                     <li><a href="{% url 'user_register' %}">Registrar</a></li>

@@ -1,54 +1,62 @@
 from django.urls import path
+from .views import (
+    FilmeListView, FilmeDetailView, FilmeCreateView, FilmeUpdateView, FilmeDeleteView,
+    AtorListView, AtorDetailView, AtorCreateView, AtorUpdateView, AtorDeleteView,
+    CategoriaListView, CategoriaDetailView, CategoriaCreateView, CategoriaUpdateView, CategoriaDeleteView,
+    PlataformaListView, PlataformaDetailView, PlataformaCreateView, PlataformaUpdateView, PlataformaDeleteView,
+    IngressoListView, IngressoDetailView, IngressoCreateView, IngressoUpdateView, IngressoDeleteView,
+    AvaliacaoListView, AvaliacaoDetailView, AvaliacaoCreateView, AvaliacaoUpdateView, AvaliacaoDeleteView,
+    UserLoginView, UserRegisterView, UserUpdateView
+)
 from . import views
 
 urlpatterns = [
     path('', views.index, name='index'),
-    # Rotas para Filme
-    path('filmes/', views.lista_filmes, name='lista_filmes'),
-    path('filmes/<int:filme_id>/', views.detalhe_filme, name='detalhe_filme'),
-    path('filmes/novo/', views.criar_filme, name='criar_filme'),
-    path('filmes/<int:filme_id>/editar/', views.atualizar_filme, name='atualizar_filme'),
-    path('filmes/<int:filme_id>/deletar/', views.deletar_filme, name='deletar_filme'),
+    # Filmes
+    path('filmes/', FilmeListView.as_view(), name='lista_filmes'),
+    path('filmes/<int:pk>/', FilmeDetailView.as_view(), name='detalhe_filme'),
+    path('filmes/novo/', FilmeCreateView.as_view(), name='criar_filme'),
+    path('filmes/<int:pk>/editar/', FilmeUpdateView.as_view(), name='atualizar_filme'),
+    path('filmes/<int:pk>/deletar/', FilmeDeleteView.as_view(), name='deletar_filme'),
 
-    # Rotas para Ator
-    path('atores/', views.lista_atores, name='lista_atores'),
-    path('atores/<int:ator_id>/', views.detalhe_ator, name='detalhe_ator'),
-    path('atores/novo/', views.criar_ator, name='criar_ator'),
-    path('atores/<int:ator_id>/editar/', views.atualizar_ator, name='atualizar_ator'),
-    path('atores/<int:ator_id>/deletar/', views.deletar_ator, name='deletar_ator'),
+    # Atores
+    path('atores/', AtorListView.as_view(), name='lista_atores'),
+    path('atores/<int:pk>/', AtorDetailView.as_view(), name='detalhe_ator'),
+    path('atores/novo/', AtorCreateView.as_view(), name='criar_ator'),
+    path('atores/<int:pk>/editar/', AtorUpdateView.as_view(), name='atualizar_ator'),
+    path('atores/<int:pk>/deletar/', AtorDeleteView.as_view(), name='deletar_ator'),
 
-    # Rotas para Categoria
-    path('categorias/', views.lista_categorias, name='lista_categorias'),
-    path('categorias/<int:categoria_id>/', views.detalhe_categoria, name='detalhe_categoria'),
-    path('categorias/novo/', views.criar_categoria, name='criar_categoria'),
-    path('categorias/<int:categoria_id>/editar/', views.atualizar_categoria, name='atualizar_categoria'),
-    path('categorias/<int:categoria_id>/deletar/', views.deletar_categoria, name='deletar_categoria'),
-    # Rotas para Plataforma
-    path('plataformas/', views.lista_plataformas, name='lista_plataformas'),
-    path('plataformas/<int:plataforma_id>/', views.detalhe_plataforma, name='detalhe_plataforma'),
-    path('plataformas/novo/', views.criar_plataforma, name='criar_plataforma'),
-    path('plataformas/<int:plataforma_id>/editar/', views.atualizar_plataforma, name='atualizar_plataforma'),
-    path('plataformas/<int:plataforma_id>/deletar/', views.deletar_plataforma, name='deletar_plataforma'),
+    # Categorias
+    path('categorias/', CategoriaListView.as_view(), name='lista_categorias'),
+    path('categorias/<int:pk>/', CategoriaDetailView.as_view(), name='detalhe_categoria'),
+    path('categorias/novo/', CategoriaCreateView.as_view(), name='criar_categoria'),
+    path('categorias/<int:pk>/editar/', CategoriaUpdateView.as_view(), name='atualizar_categoria'),
+    path('categorias/<int:pk>/deletar/', CategoriaDeleteView.as_view(), name='deletar_categoria'),
 
-    # Rotas para Ingresso
-    path('ingressos/', views.lista_ingressos, name='lista_ingressos'),
-    path('ingressos/<int:ingresso_id>/', views.detalhe_ingresso, name='detalhe_ingresso'),
-    path('ingressos/novo/', views.criar_ingresso, name='criar_ingresso'),
-    path('ingressos/<int:ingresso_id>/editar/', views.atualizar_ingresso, name='atualizar_ingresso'),
-    path('ingressos/<int:ingresso_id>/deletar/', views.deletar_ingresso, name='deletar_ingresso'),
+    # Plataformas
+    path('plataformas/', PlataformaListView.as_view(), name='lista_plataformas'),
+    path('plataformas/<int:pk>/', PlataformaDetailView.as_view(), name='detalhe_plataforma'),
+    path('plataformas/novo/', PlataformaCreateView.as_view(), name='criar_plataforma'),
+    path('plataformas/<int:pk>/editar/', PlataformaUpdateView.as_view(), name='atualizar_plataforma'),
+    path('plataformas/<int:pk>/deletar/', PlataformaDeleteView.as_view(), name='deletar_plataforma'),
 
-    # Rotas para Avaliacao
-    path('avaliacoes/', views.lista_avaliacoes, name='lista_avaliacoes'),
-    path('avaliacoes/<int:avaliacao_id>/', views.detalhe_avaliacao, name='detalhe_avaliacao'),
-    path('avaliacoes/novo/', views.criar_avaliacao, name='criar_avaliacao'),
-    path('avaliacoes/<int:avaliacao_id>/editar/', views.atualizar_avaliacao, name='atualizar_avaliacao'),
-    path('avaliacoes/<int:avaliacao_id>/deletar/', views.deletar_avaliacao, name='deletar_avaliacao'),
+    # Ingressos
+    path('ingressos/', IngressoListView.as_view(), name='lista_ingressos'),
+    path('ingressos/<int:pk>/', IngressoDetailView.as_view(), name='detalhe_ingresso'),
+    path('ingressos/novo/', IngressoCreateView.as_view(), name='criar_ingresso'),
+    path('ingressos/<int:pk>/editar/', IngressoUpdateView.as_view(), name='atualizar_ingresso'),
+    path('ingressos/<int:pk>/deletar/', IngressoDeleteView.as_view(), name='deletar_ingresso'),
 
-    # Rotas para Usuario
-    path('usuarios/<int:usuario_id>/', views.detalhe_usuario, name='detalhe_usuario'),
-    path('usuarios/<int:usuario_id>/editar/', views.atualizar_usuario, name='atualizar_usuario'),
-    path('usuarios/<int:usuario_id>/deletar/', views.deletar_usuario, name='deletar_usuario'),
-    path('login/', views.user_login, name='user_login'),
+    # Avaliações
+    path('avaliacoes/', AvaliacaoListView.as_view(), name='lista_avaliacoes'),
+    path('avaliacoes/<int:pk>/', AvaliacaoDetailView.as_view(), name='detalhe_avaliacao'),
+    path('avaliacoes/novo/', AvaliacaoCreateView.as_view(), name='criar_avaliacao'),
+    path('avaliacoes/<int:pk>/editar/', AvaliacaoUpdateView.as_view(), name='atualizar_avaliacao'),
+    path('avaliacoes/<int:pk>/deletar/', AvaliacaoDeleteView.as_view(), name='deletar_avaliacao'),
+
+    # Autenticação
+    path('login/', UserLoginView.as_view(), name='user_login'),
     path('logout/', views.user_logout, name='user_logout'),
-    path('register/', views.user_register, name='user_register'),
+    path('registrar/', UserRegisterView.as_view(), name='user_register'),
+    path('usuarios/<int:pk>/editar/', UserUpdateView.as_view(), name='atualizar_usuario'),
 ]
